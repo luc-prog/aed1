@@ -1,29 +1,29 @@
-#include<iostream>//Biblioteca para manipulaÁ„o fluxo de dados entrada e saÌda
+#include<iostream>//Biblioteca para manipula√ß√£o fluxo de dados entrada e sa√≠da
 #include<clocale>//Biblioteca especializada para manipular caracteres especiais de cada regiao
-#include<fstream>//Biblioteca responsavel para fluxo de dados com arquivos entrada e saÌda
-#include<cstdlib>//Biblioteca especializada em controle de processos do cÛdigo
+#include<fstream>//Biblioteca responsavel para fluxo de dados com arquivos entrada e sa√≠da
+#include<cstdlib>//Biblioteca especializada em controle de processos do c√≥digo
 #include<sstream>//Biblioteca usada para converter variavel string para inteiro
 
-using namespace std; //define as funÁoes da biblioteca padr„o
+using namespace std; //define as fun√ßoes da biblioteca padr√£o
 
 int contador(){//Soma as unidades no estoque da biblioteca
 
-    fstream arqU;//Permite a manipulaÁ„o de arquivos
-    string uni[20];//Armazena as informaÁıes do arquivo
-    int c,n,total=0;//variaveis de n˙meros inteiros
-    c=n=total=0;// AtualizaÁ„o das variaveis para 0
+    fstream arqU;//Permite a manipula√ß√£o de arquivos
+    string uni[20];//Armazena as informa√ß√µes do arquivo
+    int c,n,total=0;//variaveis de n√∫meros inteiros
+    c=n=total=0;// Atualiza√ß√£o das variaveis para 0
 
     arqU.open("Unidades.txt",ios::in);//Abertura do arquivo com o comando de saida
-    if(arqU.is_open()){//VerificaÁ„o se o arquivo foi aberto
-        while(!arqU.eof()){//CondiÁ„o de parada quando chegar na utlima linha do arquivo
-            getline(arqU,uni[c]);//Armazena as informaÁıes no vetor
+    if(arqU.is_open()){//Verifica√ß√£o se o arquivo foi aberto
+        while(!arqU.eof()){//Condi√ß√£o de parada quando chegar na utlima linha do arquivo
+            getline(arqU,uni[c]);//Armazena as informa√ß√µes no vetor
             c++;//Variavel que permite a troca do indice do vetor
         }
         arqU.close();//fecha o arquivo
     }
-    else{//Caso o arquivo n„o abra ira entrar neste bloco
+    else{//Caso o arquivo n√£o abra ira entrar neste bloco
             cout<<"Erro na abertura do programa!";
-            return 1;//Retorna 1 para funÁ„o caso de erro na abertura do aquivo
+            return 1;//Retorna 1 para fun√ß√£o caso de erro na abertura do aquivo
     }
     for(int i=0;i<c-1;i++){//loop para a soma dos valores no vetor
         stringstream geek(uni[i]);//Converte o string para um numero inteiro
@@ -33,32 +33,32 @@ int contador(){//Soma as unidades no estoque da biblioteca
     return total;
 }
 
-int atualizacao(string uni[],int i,int c,string nom){//funÁ„o especializada na atualizaÁ„o das unidades de obras no acervo
+int atualizacao(string uni[],int i,int c,string nom){//fun√ß√£o especializada na atualiza√ß√£o das unidades de obras no acervo
 
     fstream arqU;
     int vetUni[20];
 
-    for(int n=0;n<c-1;n++){//roda o vetor de unidades e tranformar os n˙meros string em inteiros
-        stringstream geek(uni[n]);//funÁ„o geek responsavel por conveter os dados dos arquivos string para um inteiro caso possivel
-        geek>>vetUni[n];//vetor recebe no determinado Ìndice o valor convertido
+    for(int n=0;n<c-1;n++){//roda o vetor de unidades e tranformar os n√∫meros string em inteiros
+        stringstream geek(uni[n]);//fun√ß√£o geek responsavel por conveter os dados dos arquivos string para um inteiro caso possivel
+        geek>>vetUni[n];//vetor recebe no determinado √≠ndice o valor convertido
     }
-    if(vetUni[i]==0){//verifica se o livro esta com unidades 0 ou seja n„o possui exemplares para doaÁ„o
+    if(vetUni[i]==0){//verifica se o livro esta com unidades 0 ou seja n√£o possui exemplares para doa√ß√£o
         system("CLS");
         cout<<"\n=========Livro esgotado!"<<endl;
-        system("pause");//caso pausa o programa ate ser apertado alguma tecla
+        system("pause");//pausa o programa ate ser apertado alguma tecla
     }
     else{//caso possuir mais de 0 unidades
         vetUni[i]=vetUni[i]-1;//ira dimiuir 1 no valor do vetor
         arqU.open("Unidades.txt",ios::out);//abre o arquivo no modo trunc ou seja ira reescrever os dados contidos nele
         if(arqU.is_open()){//verifica se foi aberto
-            for(int n=0;n<c-1;n++){//laÁo de repetiÁ„o para armazenar os dados atualizados no arquivo
+            for(int n=0;n<c-1;n++){//la√ßo de repeti√ß√£o para armazenar os dados atualizados no arquivo
                 arqU<<vetUni[n]<<"\n";
             }
             arqU.close();//fecha o arquivo
         }
-        else{//caso nÁao abra o arquivo
+        else{//caso n√£o abra o arquivo
             cout<<"Erro ao abrir arquivo!"<<endl;
-            return 1;//caso de erro na execuÁ„o retornara esse valor
+            return 1;//caso de erro na execu√ß√£o retornara esse valor
         }
     system("CLS");
     cout<<endl;
@@ -68,7 +68,7 @@ int atualizacao(string uni[],int i,int c,string nom){//funÁ„o especializada na a
     system("pause");
     return 0;//caso ocorra tudo certo retornara esse valor
 }
-void cadPedido(string livro[],string autor[],string editora[],string cod[],string nom,string uni[],int c){//procedimento especilizado na s·ida dos dados dos vetores e na chamda da funÁ„o para alterar a unidade da obra escolhida
+void cadPedido(string livro[],string autor[],string editora[],string cod[],string nom,string uni[],int c){//procedimento especilizado na s√°ida dos dados dos vetores e na chamda da fun√ß√£o para alterar a unidade da obra escolhida
 
     system ("CLS");
     int i;
@@ -78,14 +78,14 @@ void cadPedido(string livro[],string autor[],string editora[],string cod[],strin
                 cout<<i<<" - Obra: "<<livro[i]<<endl;
                 cout<<"- Autor: "<<autor[i]<<endl;
                 cout<<"- Editora: "<<editora[i]<<endl;
-                cout<<"- CÛdigo: "<<cod[i]<<endl<<endl;
+                cout<<"- C√≥digo: "<<cod[i]<<endl<<endl;
     }
         i=0;
-       cout<<"Digite o n˙mero da obra: ";
-       cin >> i;//le o Ìndice para alterar os dados contido nele
-       atualizacao(uni,i,c,nom);//chama a funÁ„o que altera o valor dos indices
+       cout<<"Digite o n√∫mero da obra: ";
+       cin >> i;//le o √≠ndice para alterar os dados contido nele
+       atualizacao(uni,i,c,nom);//chama a fun√ß√£o que altera o valor dos indices
 }
-int pedido(string nom){//funÁ„o destinada na doÁ„o da obra escolhida pelo usu·rio
+int pedido(string nom){//fun√ß√£o destinada na do√ß√£o da obra escolhida pelo usu√°rio
 
     system ("CLS");
 
@@ -93,7 +93,7 @@ int pedido(string nom){//funÁ„o destinada na doÁ„o da obra escolhida pelo usu·ri
     fstream arqL,arqA,arqE,arqC,arqU;
     int c=0;
 
-    arqL.open("Livros.txt",ios::in);//abertura dos arquivos com modo de saÌda de dados
+    arqL.open("Livros.txt",ios::in);//abertura dos arquivos com modo de sa√≠da de dados
     arqA.open("Autor.txt",ios::in);
     arqE.open("Editora.txt",ios::in);
     arqC.open("Codigo.txt",ios::in);
@@ -113,10 +113,10 @@ int pedido(string nom){//funÁ„o destinada na doÁ„o da obra escolhida pelo usu·ri
         arqC.close();
         arqU.close();
     }else{
-        cout<<"Arquivo n„o aberto!\n";
+        cout<<"Arquivo n√£o aberto!\n";
         return 1;
     }
-    cadPedido(livro,autor,editora,cod,nom,uni,c);//chama a funÁ„o que ira mostrar os livros disponiveis a serem escolhidos carregando as informaÁıes nos vetores
+    cadPedido(livro,autor,editora,cod,nom,uni,c);//chama a fun√ß√£o que ira mostrar os livros disponiveis a serem escolhidos carregando as informa√ß√µes nos vetores
     return 0;
 }
 int livros(){//mostra os livros no estoque do acervo
@@ -136,12 +136,12 @@ int livros(){//mostra os livros no estoque do acervo
 
             if(arqL.is_open() &arqA.is_open() &arqE.is_open() &arqC.is_open()){//verifica a abertura dos arquivos
                 cout<<"======Obras disponiveis====="<<endl<<endl;
-                while(!arqL.eof()){//enquanto nÁao chegar no final da linha
-                    getline(arqL,livro[c]);//ira armazanr os dados de cada linha no vetor declarado com determinado Ìndice
+                while(!arqL.eof()){//enquanto n√ßao chegar no final da linha
+                    getline(arqL,livro[c]);//ira armazanr os dados de cada linha no vetor declarado com determinado √≠ndice
                     getline(arqA,autor[c]);
                     getline(arqE,editora[c]);
                     getline(arqC,cod[c]);
-                    c++;//variavel contadora Ìndice do vetor
+                    c++;//variavel contadora √≠ndice do vetor
                 }
                 arqL.close();//fecha o arquivo
                 arqA.close();
@@ -151,7 +151,7 @@ int livros(){//mostra os livros no estoque do acervo
                     cout<<i<<" - Obra: "<<livro[i]<<endl;
                     cout<<"- Autor: "<<autor[i]<<endl;
                     cout<<"- Editora: "<<editora[i]<<endl;
-                    cout<<"- CÛdigo: "<<cod[i]<<endl<<endl;;
+                    cout<<"- C√≥digo: "<<cod[i]<<endl<<endl;;
                 }
             }else{
                 cout<<"Erro Desconhecido!\n";
@@ -162,30 +162,30 @@ int livros(){//mostra os livros no estoque do acervo
         }
         return 0;
 }
-void menusuario(string nom){//um menu que ira permitir o usu·rio fazer modificaÁıes no programa
+void menusuario(string nom){//um menu que ira permitir o usu√°rio fazer modifica√ß√µes no programa
 
-    int opc=1;//condiÁ„o de parada
-    char opc2='a';//para acessar outros procedimentos e funÁıes
-    int limit=0;//um limitador de entrada por vez de execuÁ„o
+    int opc=1;//condi√ß√£o de parada
+    char opc2='a';//para acessar outros procedimentos e fun√ß√µes
+    int limit=0;//um limitador de entrada por vez de execu√ß√£o
 
     while(opc!=0){
         system ("CLS");
-        cout<<"====O acervo Zaratustra conta com um total de "<<contador()<<" obras!====="<<endl;//chama funÁ„o de contadora de unidades
+        cout<<"====O acervo Zaratustra conta com um total de "<<contador()<<" obras!====="<<endl;//chama fun√ß√£o de contadora de unidades
         cout<<endl;
-        cout<<"====>Ol· "<<nom<<" :)"<<endl<<endl;//mostra o nome do usu·rio cadastrado
-        cout<<"   ====>Escolha a opÁ„o<===="<<endl;
+        cout<<"====>Ol√° "<<nom<<" :)"<<endl<<endl;//mostra o nome do usu√°rio cadastrado
+        cout<<"   ====>Escolha a op√ß√£o<===="<<endl;
         cout<<"     1 - Mostrar livros"<<endl;
         cout<<"     2 - Pegar livro "<<endl;
         cout<<"     0 - Voltar"<<endl;
         cout<<"========================"<<endl;
         cin >> opc;
 
-        switch(opc){//veirifica o caso escolhido e entra no laÁo correpondente
+        switch(opc){//veirifica o caso escolhido e entra no la√ßo correpondente
             case 1:
                 cout<<"=====Continuar?[s/n]";
                 cin>>opc2;
                 if(opc2=='S'||opc2=='s'){
-                    livros();//chama a funÁ„o livro onde sao mostrados
+                    livros();//chama a fun√ß√£o livro onde sao mostrados
                 }
                 break;
             case 2:
@@ -193,8 +193,8 @@ void menusuario(string nom){//um menu que ira permitir o usu·rio fazer modificaÁ
                     cout<<"=====Continuar?[s/n]";
                     cin>>opc2;
                     if(opc2=='S'||opc2=='s'){
-                        pedido(nom);//chama a funÁ„o destinada na doaÁ„o do livro
-                        limit=1;//o usu·rio so pode acessar essa alternativa uma unica vez logado na secc„o
+                        pedido(nom);//chama a fun√ß√£o destinada na doa√ß√£o do livro
+                        limit=1;//o usu√°rio so pode acessar essa alternativa uma unica vez logado na secc√£o
                     }
                 }else{
                     system("CLS");
@@ -206,17 +206,17 @@ void menusuario(string nom){//um menu que ira permitir o usu·rio fazer modificaÁ
                 cout<<"Voltando..."<<endl;
                 break;
             default:
-                cout<<"OpÁ„o inv·lida!"<<endl;
+                cout<<"Op√ß√£o inv√°lida!"<<endl;
                 break;
         }
     }
 }
-int usuario(){//funÁ„o que verifica os arquivos usuario.txt para liberar o "login" no programa
+int usuario(){//fun√ß√£o que verifica os arquivos usuario.txt para liberar o "login" no programa
 
     system("CLS");
 
     fstream arq;
-    string vetN[10],vetS[10];//vetor que ira armazenar os nomes e a senhas dos usu·rios cadastrados
+    string vetN[10],vetS[10];//vetor que ira armazenar os nomes e a senhas dos usu√°rios cadastrados
     string nom,senha;
     int c,s;
 
@@ -236,13 +236,13 @@ int usuario(){//funÁ„o que verifica os arquivos usuario.txt para liberar o "logi
         cout<<"Senha: ";
         cin >> senha;
         for (int i=0;i<c-1;i++){
-            if(nom==vetN[i]&&senha==vetS[i]){//veirifica se o nome e a senha digitado pelo us·riario È coerente com os encotrados no arquivo
-                menusuario(nom);//chama o procedimento e leva o nome do us·rio como referencia
+            if(nom==vetN[i]&&senha==vetS[i]){//veirifica se o nome e a senha digitado pelo us√°riario √© coerente com os encotrados no arquivo
+                menusuario(nom);//chama o procedimento e leva o nome do us√°rio como referencia
                 s=-2;
             }
         }
         if(s!=-2){
-            cout<<"Usu·rio n„o encontrado!"<<endl;
+            cout<<"Usu√°rio n√£o encontrado!"<<endl;
             system("Pause");
         }
     }
@@ -253,14 +253,14 @@ int usuario(){//funÁ„o que verifica os arquivos usuario.txt para liberar o "logi
     return 0;
 }
 
-//Blocos destinados para realizar funÁoes na area do bibliotecario
+//Blocos destinados para realizar fun√ßoes na area do bibliotecario
 
-int  exclusaoC(string usuario2[],string senha[],int c){//FunÁao para excluir usuarios cadastrados
+int  exclusaoC(string usuario2[],string senha[],int c){//Fun√ßao para excluir usuarios cadastrados
 
     fstream  arqL;
     int  n;
 
-    cout<<"Digite um n˙mero do usu·rio a ser excluÌdo: ";
+    cout<<"Digite um n√∫mero do usu√°rio a ser exclu√≠do: ";
     cin>>n;
     arqL.open("cadastro.txt",ios::out);
         if(arqL.is_open()){
@@ -276,7 +276,7 @@ int  exclusaoC(string usuario2[],string senha[],int c){//FunÁao para excluir usu
             return 1;
         }
         arqL.close();
-        cout<<"Exclus„o Feita!"<<endl;
+        cout<<"Exclus√£o Feita!"<<endl;
     return 0;
 }
 int edClient(string usuario2[],string senha[],int c){//depedente do procedimento edicaoclient usado para modificar os arquivos que contem os dados do cliente
@@ -287,15 +287,15 @@ int edClient(string usuario2[],string senha[],int c){//depedente do procedimento
     int i,opc2;
 
     for(i=0;i<c-1;i++){
-        cout<<i<<" - Usu·rio: "<<usuario2[i]<<endl;
+        cout<<i<<" - Usu√°rio: "<<usuario2[i]<<endl;
         cout<<"- Senha: "<<senha[i]<<endl<<endl;
     }
     cout<<"Deseja Editar algo?[s/n]"<<endl;
     cin >> opc;
     while(opc=='s'||opc=='S'){
-        cout<<"=====>Escolha opÁ„o<====="<<endl;
-        cout<<"    1 - Editar usu·rio"<<endl;
-        cout<<"    2 - Excluir usu·rio"<<endl;
+        cout<<"=====>Escolha op√ß√£o<====="<<endl;
+        cout<<"    1 - Editar usu√°rio"<<endl;
+        cout<<"    2 - Excluir usu√°rio"<<endl;
         cout<<"    0 - Voltar"<<endl;
         cout<<"======================="<<endl;
         cin>>opc2;
@@ -303,7 +303,7 @@ int edClient(string usuario2[],string senha[],int c){//depedente do procedimento
         switch(opc2){
             case 1:
                 i=0;
-                cout<<"\nInforme o n˙mero do cliente a ser editado: ";
+                cout<<"\nInforme o n√∫mero do cliente a ser editado: ";
                 cin>> i;
                 system("CLS");
                 cout<<"  \n======Informe os novos dados======= "<<endl;
@@ -319,7 +319,7 @@ int edClient(string usuario2[],string senha[],int c){//depedente do procedimento
                         arqL<<usuario2[i]<<"\n";
                         arqL<<senha[i]<<"\n";
                     }
-                    cout<<"EdiÁ„o Concluida!"<<endl;
+                    cout<<"Edi√ß√£o Concluida!"<<endl;
                 }
                 else{
                     cout<<"Erro ao abrir arquivo!"<<endl;
@@ -334,14 +334,14 @@ int edClient(string usuario2[],string senha[],int c){//depedente do procedimento
                 opc='n';
                 break;
             default:
-                cout<<"N„o encontrei essa opÁao!"<<endl;
+                cout<<"N√£o encontrei essa op√ßao!"<<endl;
                 break;
         }
         opc='n';
     }
     return 0;
 }
-void edicaoclient(){//procedimento que ira chamar a funÁ„o que modifica os dados dos usu·rios no arquivo
+void edicaoclient(){//procedimento que ira chamar a fun√ß√£o que modifica os dados dos usu√°rios no arquivo
 
     system ("CLS");
 
@@ -353,7 +353,7 @@ void edicaoclient(){//procedimento que ira chamar a funÁ„o que modifica os dados
     while(opc=='n'||opc=='N'){
         arqL.open("cadastro.txt",ios::in);
         if(arqL.is_open()){
-            cout<<"======EdiÁ„o=====\n"<<endl;
+            cout<<"======Edi√ß√£o=====\n"<<endl;
             while(!arqL.eof()){
                 getline(arqL,usuario2[c]);
                 getline(arqL,senha[c]);
@@ -361,18 +361,18 @@ void edicaoclient(){//procedimento que ira chamar a funÁ„o que modifica os dados
             }
             arqL.close();
         }else{
-            cout<<"Arquivo n„o aberto!\n";
+            cout<<"Arquivo n√£o aberto!\n";
         }
-            edClient(usuario2,senha,c);//chama a funÁ„o e carrega os vetores com os dados sobrepostos
+            edClient(usuario2,senha,c);//chama a fun√ß√£o e carrega os vetores com os dados sobrepostos
             cout<<"\nPara voltar: [s]";
             cin >> opc;
     }
 }
-int cadClient(string matU[][1]){//funÁ„o que ira armazenar os cadastro dos usu·rios
+int cadClient(string matU[][1]){//fun√ß√£o que ira armazenar os cadastro dos usu√°rios
 
     fstream arq;
 
-    arq.open("cadastro.txt",ios::app|ios::out);//abre o arquivo com modo de entrada de dados e usa a funÁ„o para ser escrito linha em baixo de linha
+    arq.open("cadastro.txt",ios::app|ios::out);//abre o arquivo com modo de entrada de dados e usa a fun√ß√£o para ser escrito linha em baixo de linha
     if(arq.is_open()){//verifica se o arquivo foi aberto
         arq<<matU[0][0]<<"\n";//armazena os dados
         arq<<matU[1][0]<<"\n";
@@ -384,22 +384,22 @@ int cadClient(string matU[][1]){//funÁ„o que ira armazenar os cadastro dos usu·r
     arq.close();//fecha o arquivo
     return 0;
 }
-void client(){//procedimento que cadastra usu·rios no arquivo
+void client(){//procedimento que cadastra usu√°rios no arquivo
 
     system ("CLS");//limpa terminal
 
-    char s = 'n';//condiÁ„o de parada
+    char s = 'n';//condi√ß√£o de parada
     string matU[2][1];
 
-    cout<<"=======Cadastro de usu·rios========="<<endl;
+    cout<<"=======Cadastro de usu√°rios========="<<endl;
     while(s=='n'||s=='N'){
-        cout<<"Informe o nome do usu·rio: ";
-        cin.ignore();//caso se de um ( ESPA«O) ele lÍ toda a linha
+        cout<<"Informe o nome do usu√°rio: ";
+        cin.ignore();//caso se de um ( ESPA√áO) ele l√™ toda a linha
         getline(cin,matU[0][0]);
         cout<<"Informe a senha: ";
         cin>>matU[1][0];
 
-        cadClient(matU);// chama a funÁ„o, e manda a matriz com os dados que ser„o armazenados nos arquivos
+        cadClient(matU);// chama a fun√ß√£o, e manda a matriz com os dados que ser√£o armazenados nos arquivos
         cout<<"Cadastro realizado com sucesso!"<<endl;
         cout<<"Deseja sair?[s/n]";
         cin>>s;
@@ -410,7 +410,7 @@ int exclusao(string livro[],string autor[],string editora[],string uni[],string 
     fstream arqL,arqA,arqE,arqU,arqC;
     int i;
 
-        cout<<"\nInforme o n˙mero do dado a ser excluido: ";
+        cout<<"\nInforme o n√∫mero do dado a ser excluido: ";
         cin>>i;//leitura do indice do vetor
         livro[i]="0";
 
@@ -442,13 +442,13 @@ int exclusao(string livro[],string autor[],string editora[],string uni[],string 
         system("CLS");
         return 0;
 }
-int edArqUni(string uni[],int c){//depedente da funÁ„o edArq usada apenas para alterar unidades de livros
+int edArqUni(string uni[],int c){//depedente da fun√ß√£o edArq usada apenas para alterar unidades de livros
 
     fstream arqU;
     int i;
 
-    cout<<"\nInforme o n˙mero do dado a ser editado as unidades: ";
-    cin>>i;//pega o Ìndice do vetor
+    cout<<"\nInforme o n√∫mero do dado a ser editado as unidades: ";
+    cin>>i;//pega o √≠ndice do vetor
     system("CLS");
     cout<<"  \n======Informe os novos dados======= "<<endl;
     cout<<"Unidades: ";
@@ -456,7 +456,7 @@ int edArqUni(string uni[],int c){//depedente da funÁ„o edArq usada apenas para a
 
     arqU.open("Unidades.txt",ios::out);//abre o arquivo com modo de entrada e trunc, apaga e reescreve os dados
     if(arqU.is_open()){//verifica se o arquivo foi aberto
-        for(i=0;i<c-1;i++){//armazena os dados varivel c È usada nos blocos anteriores para contar as linhas e a quantidade de dados anteriomente armazenados
+        for(i=0;i<c-1;i++){//armazena os dados varivel c √© usada nos blocos anteriores para contar as linhas e a quantidade de dados anteriomente armazenados
             arqU<<uni[i]<<"\n";
         }
     }
@@ -467,7 +467,7 @@ int edArqUni(string uni[],int c){//depedente da funÁ„o edArq usada apenas para a
     arqU.close();//fecha o arquivo
     return 0;//retorna 0 caso ocorra tudo certo
 }
-int edArq(string livro[],string autor[],string editora[],string uni[],string cod[],int c){//funÁ„o depedente do procedimento ediÁ„o realiza modifiaÁoes no aquivo.txt
+int edArq(string livro[],string autor[],string editora[],string uni[],string cod[],int c){//fun√ß√£o depedente do procedimento edi√ß√£o realiza modifia√ßoes no aquivo.txt
 
     fstream arqL,arqA,arqE,arqU,arqC;
     int i,opc2;
@@ -475,10 +475,10 @@ int edArq(string livro[],string autor[],string editora[],string uni[],string cod
 
 
     i=0;
-    cout<<"Deseja editar algo?[s/n]"<<endl;//verificaÁ„o para entrar no laÁo de repetiÁ„o
+    cout<<"Deseja editar algo?[s/n]"<<endl;//verifica√ß√£o para entrar no la√ßo de repeti√ß√£o
     cin >> opc;
     while(opc=='s'||opc=='S'){
-        cout<<"=========>Escolha a opÁ„o<========="<<endl;
+        cout<<"=========>Escolha a op√ß√£o<========="<<endl;
         cout<<"     1 - Alterar um dado por completo"<<endl;
         cout<<"     2 - Alterar apenas as unidades"<<endl;
         cout<<"     3 - Excluir algum dado"<<endl;
@@ -491,11 +491,11 @@ int edArq(string livro[],string autor[],string editora[],string uni[],string cod
             cout<<"- Autor: "<<autor[i]<<endl;
             cout<<"- Editora: "<<editora[i]<<endl;
             cout<<"- Unidades: "<<uni[i]<<endl;
-            cout<<"- CÛdigo: "<<cod[i]<<endl<<endl;;
+            cout<<"- C√≥digo: "<<cod[i]<<endl<<endl;;
         }
         switch(opc2){
             case 1:
-                cout<<"\nInforme o n˙mero do dado a ser editado: ";
+                cout<<"\nInforme o n√∫mero do dado a ser editado: ";
                 cin>>i;//leitura do indice do vetor
                 system("CLS");
                 cout<<"  \n======Informe os novos dados======= "<<endl;
@@ -508,7 +508,7 @@ int edArq(string livro[],string autor[],string editora[],string uni[],string cod
                 getline(cin,editora[i]);
                 cout<<"Unidades: ";
                 cin>>uni[i];
-                cout<<"CÛdigo: ";
+                cout<<"C√≥digo: ";
                 cin>>cod[i];// ate nesse ponto
 
                 arqL.open("Livros.txt",ios::out);//abre o arquivo com modo de entrada e com modo trunc apaga os dados contidos no arquivo e reescreve novos
@@ -538,7 +538,7 @@ int edArq(string livro[],string autor[],string editora[],string uni[],string cod
             arqC.close();
             break;
         case 2:
-            edArqUni(uni,c);//chama a funÁ„o que apenas altera as unidades dos livros
+            edArqUni(uni,c);//chama a fun√ß√£o que apenas altera as unidades dos livros
             break;
         case 3:
             exclusao(livro,autor,editora,uni,cod,c);
@@ -546,7 +546,7 @@ int edArq(string livro[],string autor[],string editora[],string uni[],string cod
                 opc='n';
             break;
         default:
-            cout<<"OpÁ„o invalida!"<<endl;
+            cout<<"Op√ß√£o invalida!"<<endl;
         }
         opc='n';
     }
@@ -562,13 +562,13 @@ void edicao(){//procedimento que ira editar os dados dos arquivos livros
     int c=0;
 
     while(opc=='n'||opc=='N'){
-        arqL.open("Livros.txt",ios::in);//abre o arquivo no modo de saÌda de dados
+        arqL.open("Livros.txt",ios::in);//abre o arquivo no modo de sa√≠da de dados
         arqA.open("Autor.txt",ios::in);
         arqE.open("Editora.txt",ios::in);
         arqU.open("Unidades.txt",ios::in);
         arqC.open("Codigo.txt",ios::in);
         if(arqL.is_open() &arqA.is_open() &arqE.is_open() &arqU.is_open() &arqC.is_open()){
-            cout<<"============EdiÁ„o===========\n"<<endl;
+            cout<<"============Edi√ß√£o===========\n"<<endl;
             while(!arqL.eof()){
                 getline(arqL,livro[c]);
                 getline(arqA,autor[c]);
@@ -583,9 +583,9 @@ void edicao(){//procedimento que ira editar os dados dos arquivos livros
             arqU.close();
             arqC.close();
         }else{
-            cout<<"Arquivo n„o aberto!\n";
+            cout<<"Arquivo n√£o aberto!\n";
         }
-        edArq(livro,autor,editora,uni,cod,c);//chama funÁ„o para ediÁ„o do arquivo os vetores carregam os dados lidos do arq correspondente
+        edArq(livro,autor,editora,uni,cod,c);//chama fun√ß√£o para edi√ß√£o do arquivo os vetores carregam os dados lidos do arq correspondente
         cout<<"Concluido!"<<endl;
         cout<<"Para voltar: [s]";
         cin >> opc;
@@ -596,9 +596,9 @@ void saidaDados(){//Procedimento especializado na leitura do arquivo livros.txt
       system ("CLS");//limpa terminal
 
      fstream arqL,arqA,arqE,arqU,arqC;
-     string livro[20],autor[20],editora[20],uni[20],cod[20];//ser„o usados para armazenar os dados dos arquivos
-    char opc='n';//condiÁ„o de parada
-    int c=0;//atualizaÁ„o vari·vel
+     string livro[20],autor[20],editora[20],uni[20],cod[20];//ser√£o usados para armazenar os dados dos arquivos
+    char opc='n';//condi√ß√£o de parada
+    int c=0;//atualiza√ß√£o vari√°vel
 
     while(opc=='n'||opc=='N'){
         arqL.open("Livros.txt",ios::in);//abertura do arquivo correspondente
@@ -608,8 +608,8 @@ void saidaDados(){//Procedimento especializado na leitura do arquivo livros.txt
         arqC.open("Codigo.txt",ios::in);
         if(arqL.is_open() &arqA.is_open() &arqE.is_open() &arqU.is_open() &arqC.is_open()){//verifica se o arquivo foi aberto
             cout<<"======Obras cadastradas====="<<endl;
-            while(!arqL.eof()){//Enquanto o arquivo n„o chegar na ultima linha
-                getline(arqL,livro[c]);//le e manda os dados escrito para os vetores em  suas pociÁıes
+            while(!arqL.eof()){//Enquanto o arquivo n√£o chegar na ultima linha
+                getline(arqL,livro[c]);//le e manda os dados escrito para os vetores em  suas poci√ß√µes
                 getline(arqA,autor[c]);
                 getline(arqE,editora[c]);
                 getline(arqU,uni[c]);
@@ -626,20 +626,20 @@ void saidaDados(){//Procedimento especializado na leitura do arquivo livros.txt
                 cout<<"- Autor: "<<autor[i]<<endl;
                 cout<<"- Editora: "<<editora[i]<<endl;
                 cout<<"- Unidades: "<<uni[i]<<endl;
-                cout<<"- CÛdigo: "<<cod[i]<<endl<<endl;;
+                cout<<"- C√≥digo: "<<cod[i]<<endl<<endl;;
             }
         }else{//caso de erro na abertura do arquivo
             cout<<"Erro Desconhecido!\n";
         }
-        cout<<"\nPara voltar: [s]";//verifica a condiÁ„o de parada
+        cout<<"\nPara voltar: [s]";//verifica a condi√ß√£o de parada
         cin >> opc;
     }
 }
-int cadArq(string matDados[][5]){//FunÁao depedente do procedimento entradaDados usada para cadastar novas obras no arquivo
+int cadArq(string matDados[][5]){//Fun√ßao depedente do procedimento entradaDados usada para cadastar novas obras no arquivo
 
-    fstream arqL,arqA,arqE,arqU,arqC;//declaraÁ„o das vari·veis para manipular os arqueivos
+    fstream arqL,arqA,arqE,arqU,arqC;//declara√ß√£o das vari√°veis para manipular os arqueivos
 
-    arqL.open("Livros.txt",ios::app|ios::out);//abre o .txt correspondente com a funÁ„o de entrada de dados, e com o modo de escrita embaixo do \n
+    arqL.open("Livros.txt",ios::app|ios::out);//abre o .txt correspondente com a fun√ß√£o de entrada de dados, e com o modo de escrita embaixo do \n
     arqA.open("Autor.txt",ios::app|ios::out);
     arqE.open("Editora.txt",ios::app|ios::out);
     arqU.open("Unidades.txt",ios::app|ios::out);
@@ -651,7 +651,7 @@ int cadArq(string matDados[][5]){//FunÁao depedente do procedimento entradaDados
         arqU<<matDados[0][3]<<"\n";
         arqC<<matDados[0][4]<<"\n";
     }
-    else{//caso o arquivo n„o abra
+    else{//caso o arquivo n√£o abra
         cout<<"Erro ao abrir arquivo!"<<endl;
         return 1;//retorna 1 caso de erro
     }
@@ -660,7 +660,7 @@ int cadArq(string matDados[][5]){//FunÁao depedente do procedimento entradaDados
     arqE.close();
     arqU.close();
     arqC.close();
-    return 0;//se a funÁ„o funcionar corretamente ira retornar 0
+    return 0;//se a fun√ß√£o funcionar corretamente ira retornar 0
 
 }
 void entradaDados(){//Procedimento especializado no preenchimento do arquivo livros.txt
@@ -670,7 +670,7 @@ void entradaDados(){//Procedimento especializado no preenchimento do arquivo liv
     string matDados[1][5];//matriz que ira carregar os dados para o arquivo
     char opc='s';//variavel para cond de parada
 
-    while(opc=='s'||opc=='S'){//laÁo de repetiÁ„o
+    while(opc=='s'||opc=='S'){//la√ßo de repeti√ß√£o
         cout<<"===Cadastro de Livros===\n";
         cout<<"Digite o nome da obra: ";
         cin.ignore();
@@ -681,39 +681,39 @@ void entradaDados(){//Procedimento especializado no preenchimento do arquivo liv
         getline(cin,matDados[0][2]);//Editora
         cout<<"Unidades: ";
         cin>>matDados[0][3];//Unidades
-        cout<<"CÛdigo: ";
-        cin>>matDados[0][4];//CÛdigo
+        cout<<"C√≥digo: ";
+        cin>>matDados[0][4];//C√≥digo
 
-        cadArq(matDados);//chama e funÁ„o e manda os dados na matriz
+        cadArq(matDados);//chama e fun√ß√£o e manda os dados na matriz
         cout<<"\nCadastar nova obra?[s/n]";
-        cin >> opc;//VerificaÁ„o da cond de parada
+        cin >> opc;//Verifica√ß√£o da cond de parada
         system("CLS");//limpa terminal
     }
 }
-void menuAcervo(){//menu para realizar modificaÁoes
+void menuAcervo(){//menu para realizar modifica√ßoes
 
     system("CLS");//Limpa terminal do windows
 
-    string senha;//varivel para entrar no laÁo if
+    string senha;//varivel para entrar no la√ßo if
 
     //cout<<"=====>Informe a senha do acervo para liberar: ";
     //cin >> senha;
-    //if(senha=="1234"){//Para entrar nesta condiÁ„o digite a senha 1234
-        int opc;//CondiÁ„o de parada
+    //if(senha=="1234"){//Para entrar nesta condi√ß√£o digite a senha 1234
+        int opc;//Condi√ß√£o de parada
         char opc2='Z';//Para verificar se  o caso deve continuar o processo
 
         while(opc!=0){
             system("CLS");//limpa terminal do windows
-            cout<<"====>Possuimos um total de "<<contador()<<" obras!"<<endl;//Chama a funÁ„o especializada na contagem  dos livros
+            cout<<"====>Possuimos um total de "<<contador()<<" obras!"<<endl;//Chama a fun√ß√£o especializada na contagem  dos livros
             cout<<"==============================="<<endl;
-            cout<<"     Acervo Zaratustra"<<endl;//SaÌda com o nome da biblioteca
+            cout<<"     Acervo Zaratustra"<<endl;//Sa√≠da com o nome da biblioteca
             cout<<"==============================="<<endl;
-            cout<<" =====>Escolha a opÁ„o<=====\n";
+            cout<<" =====>Escolha a op√ß√£o<=====\n";
             cout<<"   1 - Cadastro de livros\n";
             cout<<"   2 - Livros cadastrados\n";
-            cout<<"   3 - EdiÁ„o do acervo\n";
-            cout<<"   4 - Cadastro de usu·rios\n";
-            cout<<"   5 - EdiÁ„o de usu·rios\n";
+            cout<<"   3 - Edi√ß√£o do acervo\n";
+            cout<<"   4 - Cadastro de usu√°rios\n";
+            cout<<"   5 - Edi√ß√£o de usu√°rios\n";
             cout<<"   0 - Voltar\n";
             cout<<"=============================="<<endl;
             cin >> opc;
@@ -737,27 +737,27 @@ void menuAcervo(){//menu para realizar modificaÁoes
                     cout<<"=====Continuar?[s/n]";
                     cin>>opc2;
                     if(opc2=='S'||opc2=='s'){
-                       edicao() ;//Chama o procedimento especilizado na ediÁ„o dos livros
+                       edicao() ;//Chama o procedimento especilizado na edi√ß√£o dos livros
                     }
                     break;
                 case 4:
                     cout<<"=====Continuar?[s/n]";
                     cin>>opc2;
                     if(opc2=='S'||opc2=='s'){
-                       client() ;//Chama o procedimento especilizado no cadastro de usu·rios
+                       client() ;//Chama o procedimento especilizado no cadastro de usu√°rios
                     }
                     break;
                 case 5:
                      cout<<"=====Continuar?[s/n]";
                     cin>>opc2;
                     if(opc2=='S'||opc2=='s'){
-                        edicaoclient();//cham o procedimento especializado na ediÁ„o dos usu·rios
+                        edicaoclient();//cham o procedimento especializado na edi√ß√£o dos usu√°rios
                     }
                 case 0:
                     cout<<"Estou voltando...";
                     break;
                 default:
-                    cout<<"OpÁ„o invalida!";
+                    cout<<"Op√ß√£o invalida!";
                     system("Pause");//pausa o programa ate ser digitado uma tecla
                 break;
             //}
@@ -778,12 +778,12 @@ void menuInicial(){//procidimento inicial do programa
         cout<<"============================" <<endl;
         cout<<"         Acervo Zaratustra"<<endl;
         cout<<"============================"<<endl;
-        cout<<" ====> Escolha a opÁ„o <===="<<endl;
-        cout<<"     1 - ¡rea usu·rios"<<endl;
-        cout<<"     2 - ¡rea Bibliotec·rio"<<endl;
+        cout<<" ====> Escolha a op√ß√£o <===="<<endl;
+        cout<<"     1 - √Årea usu√°rios"<<endl;
+        cout<<"     2 - √Årea Bibliotec√°rio"<<endl;
         cout<<"     0 - Encerrar"<<endl;
         cout<<"==========================="<<endl;
-        cin >> opc;//AtualizaÁ„o de condiÁ„o de parada
+        cin >> opc;//Atualiza√ß√£o de condi√ß√£o de parada
 
         switch(opc){
             case 1:
@@ -796,14 +796,14 @@ void menuInicial(){//procidimento inicial do programa
                 cout<<"Estou Saindo..."<<endl;
                 break;
             default:
-                cout<<"N„o encontrei essa opÁ„o!"<<endl;
+                cout<<"N√£o encontrei essa op√ß√£o!"<<endl;
                 system ("pause");
                 break;
         }
     }
 }
 
-int main(){//FunÁ„o principal
+int main(){//Fun√ß√£o principal
 
     setlocale(LC_ALL,"Portuguese");//Define caracteres para regiao da lingua portuguesa
     menuInicial();//Chamada do procedimento inicial
